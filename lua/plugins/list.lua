@@ -2,6 +2,41 @@ vim.lsp.set_log_level("debug") -- 其他级别可用： "info", "warn", "error"
 
 return {
 	{
+		-- documentation
+		-- https://github.com/mg979/vim-visual-multi
+		"mg979/vim-visual-multi",
+	},
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.8",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("telescope").setup()
+		end,
+	},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+		},
+		config = function()
+			require("neo-tree").setup({
+				window = {
+					position = "left",
+					width = 30,
+					mapping_options = {
+						noremap = true,
+						nowait = true,
+					},
+				},
+			})
+		end,
+	},
+	{
 		"akinsho/bufferline.nvim",
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
@@ -20,8 +55,6 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
-		---@module "ibl"
-		---@type ibl.config
 		opts = {},
 		config = function()
 			require("ibl").setup()
@@ -96,6 +129,13 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			local lspkind = require("lspkind")
+			local luasnip = require("luasnip")
+			local has_words_before = function()
+				unpack = unpack or table.unpack
+				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+				return col ~= 0
+					and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+			end
 			cmp.setup({
 				snippet = {
 					expand = function(args)
@@ -114,6 +154,28 @@ return {
 					["<C-o>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping.confirm({ select = false }),
+					["<Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+						-- this way you will only jump inside the snippet region
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						elseif has_words_before() then
+							cmp.complete()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+					["<S-Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
