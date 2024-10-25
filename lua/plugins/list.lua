@@ -1,6 +1,7 @@
 vim.lsp.set_log_level("debug") -- 其他级别可用： "info", "warn", "error"
 
 return {
+    { 'akinsho/toggleterm.nvim', version = "*", config = true },
     {
         "folke/flash.nvim",
         event = "VeryLazy",
