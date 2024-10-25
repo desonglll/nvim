@@ -205,12 +205,12 @@ return {
         end,
         opts = {},
     },
-    -- {
-    -- 	"morhetz/gruvbox",
-    -- 	config = function()
-    -- 		vim.cmd.colorscheme("gruvbox")
-    -- 	end,
-    -- },
+    {
+        "morhetz/gruvbox",
+        config = function()
+            -- vim.cmd.colorscheme("gruvbox")
+        end,
+    },
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",

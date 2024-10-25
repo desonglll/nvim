@@ -2,4 +2,6 @@ require("config.options")
 require("config.lazy")
 require("config.keymaps")
 require("config.cmds")
+
+vim.cmd.colorscheme("gruvbox")
 -- require("utils.date")
