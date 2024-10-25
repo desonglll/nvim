@@ -2,6 +2,21 @@ vim.lsp.set_log_level("debug") -- 其他级别可用： "info", "warn", "error"
 
 return {
     {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        }
+    },
+    {
         's1n7ax/nvim-window-picker',
         name = 'window-picker',
         event = 'VeryLazy',
@@ -186,7 +201,7 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd([[colorscheme tokyonight]])
+            -- vim.cmd([[colorscheme tokyonight]])
         end,
         opts = {},
     },
@@ -202,6 +217,13 @@ return {
         config = function()
             local configs = require("nvim-treesitter.configs")
             configs.setup({
+                incremental_selection = {
+                    enable = true,
+                    keymaps = {
+                        node_incremental = "v",
+                        node_decremental = "V"
+                    }
+                },
                 ensure_installed = { "c", "lua", "vim", "vimdoc", "rust" },
                 sync_install = false,
                 highlight = { enable = true },
