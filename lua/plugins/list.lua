@@ -1,21 +1,39 @@
 vim.lsp.set_log_level("debug") -- 其他级别可用： "info", "warn", "error"
 
 return {
-	-- {
-	-- 	"folke/noice.nvim",
-	-- 	event = "VeryLazy",
-	-- 	opts = {
-	-- 		-- add any options here
-	-- 	},
-	-- 	dependencies = {
-	-- 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		-- OPTIONAL:
-	-- 		--   `nvim-notify` is only needed, if you want to use the notification view.
-	-- 		--   If not available, we use `mini` as the fallback
-	-- 		"rcarriga/nvim-notify",
-	-- 	},
-	-- },
+	{
+		"rmagatti/goto-preview",
+		event = "BufEnter",
+		config = function()
+			require("goto-preview").setup({
+				default_mappings = true,
+			})
+		end, -- necessary as per https://github.com/rmagatti/goto-preview/issues/88
+		-- Default keybinddings.
+		-- nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>
+		-- nnoremap gpt <cmd>lua require('goto-preview').goto_preview_type_definition()<CR>
+		-- nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>
+		-- nnoremap gpD <cmd>lua require('goto-preview').goto_preview_declaration()<CR>
+		-- nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>
+		-- nnoremap gpr <cmd>lua require('goto-preview').goto_preview_references()<CR>
+	},
+	{
+		"norcalli/nvim-colorizer.lua",
+		-- For hex color previewed.
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
+	{
+		"nvimdev/dashboard-nvim",
+		event = "VimEnter",
+		config = function()
+			require("dashboard").setup({
+				-- config
+			})
+		end,
+		dependencies = { { "nvim-tree/nvim-web-devicons" } },
+	},
 	{
 		"s1n7ax/nvim-window-picker",
 		name = "window-picker",
@@ -151,11 +169,30 @@ return {
 			require("neo-tree").setup({
 				window = {
 					position = "left",
-					width = 30,
+					width = 25,
 					mapping_options = {
 						noremap = true,
 						nowait = true,
 					},
+				},
+				file_size = {
+					enabled = true,
+					required_width = 10, -- min width of window required to show this column
+				},
+				type = {
+					enabled = true,
+					required_width = 122, -- min width of window required to show this column
+				},
+				last_modified = {
+					enabled = true,
+					required_width = 88, -- min width of window required to show this column
+				},
+				created = {
+					enabled = true,
+					required_width = 110, -- min width of window required to show this column
+				},
+				symlink_target = {
+					enabled = false,
 				},
 			})
 		end,
@@ -177,11 +214,14 @@ return {
 		end,
 	},
 	{
+		"hiphish/rainbow-delimiters.nvim",
+	},
+	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		opts = {},
 		config = function()
-			require("ibl").setup()
+			require("ibl").setup({})
 		end,
 	},
 	{
@@ -379,7 +419,7 @@ return {
 				"ts_ls",
 				"bashls",
 				"jdtls",
-				"rust_analyzer",
+				-- auto install rust_analyzer
 			}
 			require("mason-lspconfig").setup({
 				ensure_installed = lsp_list,

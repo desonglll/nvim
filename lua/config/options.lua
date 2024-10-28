@@ -8,3 +8,4 @@ vim.o.shiftwidth = 4 -- 使用 << 和 >> 命令时的缩进空格数
 vim.o.expandtab = true -- 将制表符转换为空格
 
 vim.opt.iskeyword:append({ "-", "_" })
+vim.opt.termguicolors = true
