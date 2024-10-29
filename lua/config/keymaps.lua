@@ -91,6 +91,13 @@ wk.add({ -- Visual 模式下缩进代码
 	},
 	{ "<space>g", group = "Git" },
 	{ "<space>gg", "<cmd>LazyGit<cr>", desc = "LazyGit", mode = "n" },
+	{
+		"<leader>x",
+		group = "Diagnostics",
+	},
+	-- For multi cursor
+	{ "<M-k>", "<Plug>(VM-Add-Cursor-Up)", desc = "VM-Add-Cursor-Up", mode = "n" },
+	{ "<M-j>", "<Plug>(VM-Add-Cursor-Down)", desc = "VM-Add-Cursor-Down", mode = "n" },
 })
 
 --keymap.set("n", "<space>fr", telescope.lsp_references, { desc = "Lists LSP references for word under the cursor" })
