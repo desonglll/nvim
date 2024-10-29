@@ -46,6 +46,8 @@ wk.add({ -- Visual 模式下缩进代码
 
 	-- Neotree 切换
 	{ "<space>e", ":Neotree toggle<cr>", desc = "Neotree toggle", mode = "n" },
+	-- Symbols Outline切换
+	{ "<leader>t", ":SymbolsOutline<cr>", desc = "SymbolsOutline toggle", mode = "n" },
 
 	-- 跳转到诊断信息
 	{ "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic", mode = "n" },

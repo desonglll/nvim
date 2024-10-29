@@ -2,6 +2,13 @@ vim.lsp.set_log_level("debug") -- 其他级别可用： "info", "warn", "error"
 
 return {
 	{
+		-- https://github.com/simrat39/symbols-outline.nvim
+		"simrat39/symbols-outline.nvim",
+		config = function()
+			require("symbols-outline").setup()
+		end,
+	},
+	{
 		"ray-x/lsp_signature.nvim",
 		event = "VeryLazy",
 		opts = {},
