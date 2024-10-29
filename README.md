@@ -1,5 +1,9 @@
 [about tab and buffer](https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/)
 
+## Build latest neovim
+
+[Build](https://github.com/neovim/neovim/blob/master/BUILD.md)
+
 ## Terminal environment initialization
 
 ```shell

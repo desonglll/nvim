@@ -434,8 +434,10 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
+			local is_aarch64 = vim.fn.system("uname -m"):match("aarch64") ~= nil
+
 			local lsp_list = {
-				"clangd", -- For C/C++
+				unpack(is_aarch64 and {} or { "clangd" }), -- 如果是 armlinux，则不安装 clangd
 				"lua_ls", -- For Lua
 				"ts_ls",
 				"bashls",
