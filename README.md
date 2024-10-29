@@ -1,29 +1,48 @@
 [about tab and buffer](https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/)
 
+## Terminal environment initialization
+
+```shell
+apt install zsh
+chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" # For zsh
+```
+
+### Install Nodejs
+
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash # Install nvm for nodejs
+```
+
+### Install repgrep
+
+```
+sudo apt install ripgrep
+```
+
+### Install Rust
+
+```shell
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+## neo-vim commands
+
+- `:set paste` : For avoid wrong paste format when paste something.
+
 ## neo-vim hotkeys
 
 ### :help
 
-在 Neovim 中，你可以通过以下方法在 `:help` 页面快速跳转目录：
+**使用 `:helptags`**：如果你安装了额外的插件并且帮助文件没有自动更新，你可以运行 `:helptags` 命令来生成帮助标签。
 
-1. **使用 `:help` 命令**：直接输入 `:help` 加上你要查找的主题。例如，`:help options` 会打开与选项相关的帮助页面。
-
-2. **使用标签页**：帮助文件是以标签页的形式组织的，你可以使用 `CTRL-]` 跳转到光标下的标签。如果你在帮助页面上，使用 `CTRL-o` 可以返回到之前的位置。
-
-3. **使用 `:helptags`**：如果你安装了额外的插件并且帮助文件没有自动更新，你可以运行 `:helptags` 命令来生成帮助标签。
-
-4. **使用搜索**：在帮助文件中，你可以使用 `/` 进行搜索。输入 `/` 后加上关键词，然后按 `Enter` 进行搜索，使用 `n` 和 `N` 进行向前或向后查找。
-
-5. **使用 `:h` 命令**：输入 `:h` 后接上你想要查找的主题，例如 `:h user-manual`，可以快速导航到用户手册。
-
-6. **帮助页面导航**：
-   - `CTRL-]`：跳转到光标下的标签。
-   - `CTRL-o`：返回到上一个位置。
-   - `CTRL-i`：前进到下一个位置。
-   - `CTRL-^`：切换到最后一个访问的缓冲区。
-
-7. **使用目录树**：在帮助页面的顶部通常有一个目录，你可以通过导航它来找到你需要的部分。
+- `gj/k`: Go to the next line in current line.
+- `gi`: Go to previous insert place and turn into insert mode.
+- `CTRL-]`：跳转到光标下的标签。
+- `CTRL-o`：返回到上一个位置。
+- `CTRL-i`：前进到下一个位置。
+- `CTRL-^`：切换到最后一个访问的缓冲区。
 
 ### windows move
 
-`<C-w>L` 将当前窗口移动到右侧的窗口位置
+- `<C-w>L` 将当前窗口移动到右侧的窗口位置
