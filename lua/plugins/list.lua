@@ -1,6 +1,28 @@
 vim.lsp.set_log_level("debug") -- 其他级别可用： "info", "warn", "error"
 
 return {
+	{
+		"tpope/vim-surround",
+
+		-- make sure to change the value of `timeoutlen` if it's not triggering correctly, see https://github.com/tpope/vim-surround/issues/117
+		-- setup = function()
+		--  vim.o.timeoutlen = 500
+		-- end
+	},
+	{ "tpope/vim-repeat" },
+	{
+		"felipec/vim-sanegx",
+		event = "BufRead",
+	},
+	{
+		"itchyny/vim-cursorword",
+	},
+	{
+		"karb94/neoscroll.nvim",
+		config = function()
+			require("neoscroll").setup()
+		end,
+	},
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 	{
 		-- https://github.com/monaqa/dial.nvim
