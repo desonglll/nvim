@@ -2,6 +2,15 @@ vim.lsp.set_log_level("debug") -- 其他级别可用： "info", "warn", "error"
 
 return {
 	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+	},
+	{
 		"tpope/vim-surround",
 
 		-- make sure to change the value of `timeoutlen` if it's not triggering correctly, see https://github.com/tpope/vim-surround/issues/117

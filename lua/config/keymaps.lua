@@ -2,6 +2,8 @@ local wk = require("which-key")
 
 local telescope = require("telescope.builtin")
 wk.add({ -- Visual 模式下缩进代码
+
+	{ "jk", "<ESC>", desc = "Exit insert mode", mode = "i" },
 	{ "<c-w>", [[<C-\><C-n><C-w>]], desc = "Exit terminal mode", mode = "t" },
 	{ "<", "<gv", desc = "Indent left", mode = "v" },
 	{ ">", ">gv", desc = "Indent right", mode = "v" },
