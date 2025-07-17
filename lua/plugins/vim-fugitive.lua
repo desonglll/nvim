@@ -1,7 +1,7 @@
 return {
     "tpope/vim-fugitive",
     opts = {},
-    config = function(_, opts)
+    config = function()
         -- require("fugitive").setup({})
     end
 }
