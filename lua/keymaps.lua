@@ -1,62 +1,36 @@
-vim.api.nvim_set_keymap("n", "<leader>w", ":w<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>q", ":q<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>x", ":x<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>e", ":Ex<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>q", ":q<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>x", ":x<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<leader>e", ":Ex<CR>", { noremap = true, silent = true })
 
--- Define key mappings using native Neovim API
-local keymaps = {
-    { "jk",    "<ESC>",               "Exit insert mode",                   "i" },
-    { "<c-w>", [[<C-\><C-n><C-w>]],   "Exit terminal mode",                 "t" },
-    { "<",     "<gv",                 "Indent left",                        "v" },
-    { ">",     ">gv",                 "Indent right",                       "v" },
+vim.keymap.set("n", "<C-h>", ":vertical resize -2<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-l>", ":vertical resize +2<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-j>", ":resize +2<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-k>", ":resize -2<CR>", { noremap = true, silent = true })
 
-    -- Move selected text up and down
-    { "J",     ":move '>+1<cr>gv-gv", "Move selected text DOWN in context", "v" },
-    { "K",     ":move '<-2<cr>gv-gv", "Move selected text UP in context",   "v" },
+vim.keymap.set("i", "jk", "<ESC>", { noremap = true, silent = true })
 
-    -- Save file
-    { "<C-s>", ":w<CR>",              "Save file",                          "n" },
-    { "<C-s>", "<C-c>:w<CR>",         "Save file in visual mode",           "v" },
-    { "<C-s>", "<C-c>:w<CR>",         "Save file in insert mode",           "i" },
+vim.keymap.set("t", "<c-w>", [[<C-\><C-n><C-w>]], { noremap = true, silent = true })
 
+vim.keymap.set("v", "<", "<gv", { noremap = true, silent = true })
+vim.keymap.set("v", ">", ">gv", { noremap = true, silent = true })
 
-    -- LSP and Diagnostics
-    {
-        "[d",
-        function()
-            vim.diagnostic.jump({ count = -1, float = true })
-        end,
-        "Go to previous diagnostic",
-        "n",
-    },
-    {
-        "]d",
-        function()
-            vim.diagnostic.jump({ count = 1, float = true })
-        end,
-        "Go to next diagnostic",
-        "n",
-    },
-    {
-        "<M-d>",
-        function()
-            vim.diagnostic.open_float()
-        end,
-        "Open diagnostic float",
-        "n",
-    },
-    {
-        "<M-a>",
-        function()
-            vim.lsp.buf.code_action()
-        end,
-        "Show code actions",
-        "n",
-    },
-}
+vim.keymap.set("v", "J", ":move '>+1<cr>gv-gv", { noremap = true, silent = true })
+vim.keymap.set("v", "K", ":move '<-2<cr>gv-gv", { noremap = true, silent = true })
 
--- Apply the key mappings
-for _, map in ipairs(keymaps) do
-    local lhs, rhs, desc, mode = map[1], map[2], map[3], map[4]
-    vim.keymap.set(mode, lhs, rhs, { desc = desc, noremap = true, silent = true })
-end
+vim.keymap.set("n", "<C-s>", ":w<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<C-s>", "<C-c>:w<CR>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-s>", "<C-c>:w<CR>", { noremap = true, silent = true })
+
+vim.keymap.set("n", "[b", function() vim.cmd([[bprevious]]) end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "]b", function() vim.cmd([[bnext]]) end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end,
+    { noremap = true, silent = true, desc = "Go to previous diagnostic" })
+vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end,
+    { noremap = true, silent = true, desc = "Go to next diagnostic" })
+vim.keymap.set("n", "<M-d>", function() vim.diagnostic.open_float() end,
+    { noremap = true, silent = true, desc = "Open diagnostic float" })
+vim.keymap.set("n", "<M-a>", function() vim.lsp.buf.code_action() end,
+    { noremap = true, silent = true, desc = "Show code actions" })

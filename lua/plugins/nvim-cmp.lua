@@ -8,7 +8,8 @@ return {
     {
         "hrsh7th/nvim-cmp",
         version = false, -- last release is way too old
-        event = "InsertEnter",
+        lazy = false,
+        -- event = "InsertEnter",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
@@ -63,7 +64,7 @@ return {
                         end,
                         ['<S-Tab>'] = function(fallback)
                             if cmp.visible() then
-                                cmp.select_next_item()
+                                cmp.select_prev_item()
                             else
                                 fallback()
                             end
@@ -71,7 +72,11 @@ return {
                     }),
                     sources = cmp.config.sources({
                         { name = "nvim_lsp" },
-                        { name = "luasnip" }, -- For luasnip users.
+                        { name = "luasnip" },
+                        {
+                            name = "dictionary",
+                            keyword_length = 2,
+                        }
                     }, {
                         { name = "buffer" },
                     }),
@@ -87,7 +92,7 @@ return {
                     { name = "buffer" },
                 }),
             })
-            require("cmp_git").setup()
+            require("cmp_git").setup({})
             --
 
             -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
