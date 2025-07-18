@@ -1,6 +1,12 @@
 return {
     'saghen/blink.cmp',
-    dependencies = { 'rafamadriz/friendly-snippets' },
+    dependencies = {
+        'rafamadriz/friendly-snippets',
+        {
+            'Kaiser-Yang/blink-cmp-dictionary',
+            dependencies = { 'nvim-lua/plenary.nvim' },
+        }
+    },
 
     version = '1.*',
     ---@module 'blink.cmp'
@@ -24,7 +30,26 @@ return {
             },
 
             sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
+                default = { 'lsp', 'path', 'snippets', 'buffer', 'dictionary' },
+                providers = {
+                    dictionary = {
+                        module = 'blink-cmp-dictionary',
+                        name = 'Dict',
+                        -- Make sure this is at least 2.
+                        -- 3 is recommended
+                        min_keyword_length = 3,
+                        opts = {
+                            -- options for blink-cmp-dictionary
+                            dictionary_directories = function()
+                                return {
+                                    vim.fn.expand(
+                                        vim.fs.joinpath(vim.fn.stdpath("config"), "dictionary")
+                                    )
+                                }
+                            end
+                        }
+                    }
+                },
             },
 
             fuzzy = { implementation = "prefer_rust_with_warning" },
