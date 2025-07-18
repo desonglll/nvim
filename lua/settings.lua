@@ -11,7 +11,15 @@ vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.iskeyword:append({ "-", "_" })
 vim.opt.list = true
-vim.opt.listchars:append("eol:↴")
+-- vim.opt.listchars:append("eol:↴")
+vim.opt.listchars = {
+    -- eol = "↴",
+    -- tab = "»",
+    -- extends = "›",
+    -- precedes = "‹",
+    -- nbsp = "·",
+    -- trail = "·"
+}
 vim.opt.mouse = "a"
 vim.opt.scrolloff = 8
 vim.opt.showmatch = true

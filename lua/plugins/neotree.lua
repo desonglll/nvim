@@ -26,14 +26,14 @@ return {
                     added     = "+", -- 添加
                     deleted   = "-", -- 删除
                     modified  = "~", -- 修改
-                    renamed   = "→", -- 重命名
+                    renamed   = "R", -- 重命名
 
                     -- Status type
-                    untracked = "?", -- 未追踪
-                    ignored   = "◌", -- 忽略
+                    untracked = "U", -- 未追踪
+                    ignored   = "i", -- 忽略
                     unstaged  = "!", -- 未暂存
-                    staged    = "✓", -- 已暂存
-                    conflict  = "✗", -- 冲突
+                    staged    = "s", -- 已暂存
+                    conflict  = "x", -- 冲突
                 }
             }
         }

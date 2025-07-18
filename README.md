@@ -21,6 +21,10 @@ fn main(){
 }
 ```
 
+## Utils
+
+Go to `keymaps.lua` to enable cowboy discipline.
+
 ## Keymap
 
 ### Editor
