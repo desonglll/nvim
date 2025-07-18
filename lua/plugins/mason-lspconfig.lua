@@ -22,6 +22,8 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        dependencies = {
+        },
         config = function()
             local lspconfig = require('lspconfig')
 
