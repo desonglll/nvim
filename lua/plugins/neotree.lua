@@ -10,7 +10,7 @@ return {
     opts = {
         close_if_last_window = true,
         window = {
-            position = "left",
+            position = "current",
             width = 30,
             mapping_options = {
                 noremap = true,
