@@ -43,7 +43,7 @@ return {
                             dictionary_directories = function()
                                 return {
                                     vim.fn.expand(
-                                        vim.fs.joinpath(vim.fn.stdpath("config"), "dictionary")
+                                        vim.fs.joinpath(vim.fn.stdpath("cache"), "dictionary")
                                     )
                                 }
                             end

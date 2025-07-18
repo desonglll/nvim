@@ -21,7 +21,6 @@ fn main(){
 }
 ```
 
-
 ## Keymap
 
 ### Editor
