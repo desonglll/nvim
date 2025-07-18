@@ -32,5 +32,7 @@ vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = tr
     { noremap = true, silent = true, desc = "Go to next diagnostic" })
 vim.keymap.set("n", "<M-d>", function() vim.diagnostic.open_float() end,
     { noremap = true, silent = true, desc = "Open diagnostic float" })
+vim.keymap.set("n", "<leader-d>", function() vim.diagnostic.open_float() end,
+    { noremap = true, silent = true, desc = "Open diagnostic float" })
 vim.keymap.set("n", "<M-a>", function() vim.lsp.buf.code_action() end,
     { noremap = true, silent = true, desc = "Show code actions" })
