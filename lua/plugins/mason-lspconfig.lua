@@ -22,18 +22,17 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
-        dependencies = {
-        },
+        dependencies = {},
         config = function()
-            local lspconfig = require('lspconfig')
+            local lspconfig = require("lspconfig")
 
             lspconfig.lua_ls.setup({
                 settings = {
                     diagnostics = {
-                        globals = { "vim" }
-                    }
-                }
+                        globals = { "vim" },
+                    },
+                },
             })
-        end
-    }
+        end,
+    },
 }

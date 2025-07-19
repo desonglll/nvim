@@ -3,6 +3,5 @@ return {
     lazy = false,
     priority = 1000,
     opts = {},
-    config = function()
-    end
+    config = function() end,
 }

@@ -6,6 +6,5 @@ return {
     },
     config = function(_, opts)
         require("drop").setup(opts)
-    end
-
+    end,
 }

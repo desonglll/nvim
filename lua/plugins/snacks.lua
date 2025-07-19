@@ -5,7 +5,13 @@ return {
     lazy = false,
     ---@type snacks.Config
     keys = {
-        { "<leader>c", function() Snacks.bufdelete() end, desc = "Close Buffer" },
+        {
+            "<leader>c",
+            function()
+                Snacks.bufdelete()
+            end,
+            desc = "Close Buffer",
+        },
     },
     opts = {
         dashboard = {
@@ -13,8 +19,22 @@ return {
             sections = {
                 { section = "header" },
                 { section = "keys", gap = 1, padding = 1 },
-                { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
-                { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+                {
+                    pane = 2,
+                    icon = " ",
+                    title = "Recent Files",
+                    section = "recent_files",
+                    indent = 2,
+                    padding = 1,
+                },
+                {
+                    pane = 2,
+                    icon = " ",
+                    title = "Projects",
+                    section = "projects",
+                    indent = 2,
+                    padding = 1,
+                },
                 {
                     pane = 2,
                     icon = " ",
@@ -33,8 +53,7 @@ return {
             },
         },
         bigfile = {
-            enabled = true
-        }
-    }
-
+            enabled = true,
+        },
+    },
 }

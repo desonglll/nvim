@@ -1,21 +1,21 @@
 return {
-    'saghen/blink.cmp',
+    "saghen/blink.cmp",
     dependencies = {
-        'rafamadriz/friendly-snippets',
+        "rafamadriz/friendly-snippets",
         {
-            'Kaiser-Yang/blink-cmp-dictionary',
-            dependencies = { 'nvim-lua/plenary.nvim' },
-        }
+            "Kaiser-Yang/blink-cmp-dictionary",
+            dependencies = { "nvim-lua/plenary.nvim" },
+        },
     },
 
-    version = '1.*',
+    version = "1.*",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts_extend = { "sources.default" },
     config = function()
         require("blink-cmp").setup({
             appearance = {
-                nerd_font_variant = 'mono'
+                nerd_font_variant = "mono",
             },
 
             completion = {
@@ -24,13 +24,12 @@ return {
                     selection = {
                         preselect = false,
                         auto_insert = false,
-                    }
-
-                }
+                    },
+                },
             },
 
             sources = {
-                default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'dictionary' },
+                default = { "lazydev", "lsp", "path", "snippets", "buffer", "dictionary" },
                 providers = {
                     lazydev = {
                         name = "LazyDev",
@@ -39,8 +38,8 @@ return {
                         score_offset = 100,
                     },
                     dictionary = {
-                        module = 'blink-cmp-dictionary',
-                        name = 'Dict',
+                        module = "blink-cmp-dictionary",
+                        name = "Dict",
                         -- Make sure this is at least 2.
                         -- 3 is recommended
                         min_keyword_length = 3,
@@ -50,11 +49,11 @@ return {
                                 return {
                                     vim.fn.expand(
                                         vim.fs.joinpath(vim.fn.stdpath("cache"), "dictionary")
-                                    )
+                                    ),
                                 }
-                            end
-                        }
-                    }
+                            end,
+                        },
+                    },
                 },
             },
 
@@ -62,19 +61,19 @@ return {
             keymap = {
                 ["<C-d>"] = { "scroll_documentation_down", "fallback" },
                 ["<C-u>"] = { "scroll_documentation_up", "fallback" },
-                ['<M-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
-                ['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
-                ['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
+                ["<M-space>"] = { "show", "show_documentation", "hide_documentation" },
+                ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
+                ["<C-n>"] = { "select_next", "fallback_to_mappings" },
                 ["<C-e>"] = {
                     function(cmp)
                         cmp.cancel()
-                    end
+                    end,
                 },
                 ["<CR>"] = {
                     "accept",
-                    "fallback"
+                    "fallback",
                 },
-                ['<Tab>'] = {
+                ["<Tab>"] = {
                     function(cmp)
                         if cmp.snippet_active() then
                             return cmp.accept()
@@ -82,14 +81,14 @@ return {
                             return cmp.select_and_accept()
                         end
                     end,
-                    'snippet_forward',
-                    'fallback'
+                    "snippet_forward",
+                    "fallback",
                 },
-                ['<S-Tab>'] = {
+                ["<S-Tab>"] = {
                     "snippet_backward",
-                    "fallback"
+                    "fallback",
                 },
             },
         })
-    end
+    end,
 }

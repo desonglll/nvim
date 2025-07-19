@@ -3,5 +3,5 @@ return {
     opts = {},
     config = function()
         -- require("fugitive").setup({})
-    end
+    end,
 }

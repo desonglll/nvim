@@ -33,7 +33,7 @@ return {
         vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "Telescope find keymaps" })
         vim.keymap.set("n", "<leader>sg", function()
             builtin.live_grep({
-                grep_open_files = true
+                grep_open_files = true,
             })
         end, { desc = "Telescope live grep" })
         vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
