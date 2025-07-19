@@ -2,6 +2,8 @@ return {
     {
         "akinsho/bufferline.nvim",
         version = "*",
+        priority = 1000,
+        lazy = false,
         dependencies = {
             "nvim-tree/nvim-web-devicons",
             "famiu/bufdelete.nvim",

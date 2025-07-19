@@ -1,7 +1,28 @@
 return {
 
     "nvim-telescope/telescope.nvim",
-    opts = function(_, opts)
+    opts = function()
+        local builtin = require("telescope.builtin")
+
+        vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+        vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Diagnostics" })
+        vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+        vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+        vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+        vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Telescope recent files" })
+        vim.keymap.set("n", "<leader>ft", builtin.treesitter, { desc = "Telescope Treesitter" })
+        vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "Telescope search commands" })
+        vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "Telescope search keymaps" })
+        vim.keymap.set("n", "<leader>st", builtin.tags, { desc = "Telescope search keymaps" })
+
+        vim.keymap.set("n", "<leader>sg", function()
+            builtin.live_grep({
+                grep_open_files = true,
+            })
+        end, { desc = "Telescope search live grep" })
+
+        vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Definition" })
+
         -- local function flash(prompt_bufnr)
         --     require("flash").jump({
         --         pattern = "^",
@@ -27,20 +48,5 @@ return {
         --     },
         -- })
     end,
-    config = function()
-        local builtin = require("telescope.builtin")
-        vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
-        vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "Telescope find keymaps" })
-        vim.keymap.set("n", "<leader>sg", function()
-            builtin.live_grep({
-                grep_open_files = true,
-            })
-        end, { desc = "Telescope live grep" })
-        vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
-        vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
-        vim.keymap.set("n", "<leader>r", builtin.oldfiles, { desc = "Recent files" })
-        vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Diagnostics" })
-        vim.keymap.set("n", "<leader>ft", builtin.treesitter, { desc = "Telescope Treesitter" })
-        vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Definition" })
-    end,
+    config = function() end,
 }
