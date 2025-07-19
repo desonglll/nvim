@@ -1,3 +1,7 @@
+# Neovim Configuration
+
+[Github]("https://github.com/desonglll/nvim")
+
 ## Requirement
 
 - nodejs
@@ -7,14 +11,14 @@ sudo apt update
 
 sudo apt update && sudo apt upgrade -y
 sudo add-apt-repository ppa:deadsnakes/ppa -y
-sudo apt update
+sudo apt update 
 sudo apt install python3.12 python3.12-venv python3.12-dev -y
 
 sudo apt install git build-essential unzip
 ```
 
 ## Rust snippets
-
+ 
 ```rust
 fn main(){
     println!("hello world")
