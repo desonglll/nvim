@@ -19,12 +19,34 @@ return {
             },
 
             completion = {
-                documentation = { auto_show = true },
+                menu = {
+                    border = "single",
+                    winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
+                    draw = {
+                        padding = { 0, 1 }, -- padding only on right side
+                        components = {
+                            kind_icon = {
+                                text = function(ctx)
+                                    return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
+                                end,
+                            },
+                        },
+                    },
+                },
+                documentation = {
+                    auto_show = true,
+                    window = {
+                        border = "single",
+                    },
+                },
                 list = {
                     selection = {
                         preselect = false,
                         auto_insert = false,
                     },
+                },
+                trigger = {
+                    show_on_insert_on_trigger_character = false,
                 },
             },
 
