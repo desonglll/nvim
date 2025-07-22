@@ -1,6 +1,7 @@
 if vim.g.neovide then
-    local default_path = vim.fn.expand("~")
-    vim.api.nvim_set_current_dir(default_path)
+    -- local default_path = vim.fn.expand("~")
+    -- vim.api.nvim_set_current_dir(default_path)
+    vim.api.nvim_set_current_dir(vim.env.PWD)
     -- print(string.format("Neovide version: %s", vim.g.neovide_version))
     -- print("Neovide detected. Loading configuration for Neovide")
     vim.o.guifont = "ZedMono Nerd Font:h18"

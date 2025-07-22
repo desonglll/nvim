@@ -8,9 +8,23 @@ return {
     },
     lazy = false,
     opts = {
+        buffers = { follow_current_file = { enable = true } },
+
+        filesystem = {
+            follow_current_file = {
+                enabled = true,
+                leave_dirs_open = false,
+            },
+        },
         close_if_last_window = true,
         window = {
-            position = "current",
+            bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
+            cwd_target = {
+                sidebar = "tab", -- sidebar is when position = left or right
+                current = "window", -- current is when position = current
+            },
+
+            position = "left",
             width = 30,
             mapping_options = {
                 noremap = true,
