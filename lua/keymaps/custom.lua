@@ -1,3 +1,33 @@
+if vim.fn.has("mac") == 1 then
+    -- For macOS keymaps
+    --
+    -- Linux：has('unix')
+    -- Windows：has('win32')
+    -- macOS：has('mac')
+    --
+    -- print("This is macOS")
+
+    vim.keymap.set(
+        { "n" },
+        "<D-y>",
+        '"+y',
+        { noremap = true, silent = true, desc = "Copy to clipboard" }
+    )
+    vim.keymap.set(
+        { "n" },
+        "<D-p>",
+        '"+p',
+        { noremap = true, silent = true, desc = "Paste from clipboard" }
+    )
+
+    vim.keymap.set(
+        { "n" },
+        "<D-P>",
+        '"+P',
+        { noremap = true, silent = true, desc = "Paste from clipboard" }
+    )
+end
+
 vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true, desc = "Save buffer" })
 vim.keymap.set("n", "<leader>q", ":q<CR>", { noremap = true, silent = true, desc = "Quit buffer" })
 vim.keymap.set(
