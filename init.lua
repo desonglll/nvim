@@ -24,8 +24,8 @@ if vim.g.neovide then
     vim.g.neovide_confirm_quit = true
 
     vim.g.neovide_detach_on_quit = "always_detach"
-    -- vim.g.neovide_fullscreen = true
-    vim.g.neovide_macos_simple_fullscreen = true
+    vim.g.neovide_fullscreen = true
+    -- vim.g.neovide_macos_simple_fullscreen = true
 
     vim.g.neovide_cursor_hack = true
 end
