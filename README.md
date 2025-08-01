@@ -1,6 +1,4 @@
 
-
-
 CTRL-W gf						*CTRL-W_gf*
 		Open a new tab page and edit the file name under the cursor.
 		Like "tab split" and "gf", but the new tab page isn't created

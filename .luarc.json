@@ -1,2 +1,7 @@
 {
+    "column_limit": 0,
+    "max_line_length": 120,
+    "single_line_table": true,
+    "use_tab": false,
+    "indent_width": 2
 }
